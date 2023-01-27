@@ -1,23 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import Circle from './components/circle';
+import Slider from './components/slider';
+import { useState } from 'react';
+import Bars from './components/bars';
 
 function App() {
+  const [range, setRange] = useState(0);
+
+  const onRangeChange = (value) => {
+    setRange(value);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div class="container text-center p-5">
+        <div class="row align-center">
+          <div class="col">
+            <div class="row justify-content-center">
+              <Circle range={range} />
+              <Slider onRangeChange={onRangeChange} />
+            </div>
+          </div>
+          <div class="col">
+            <div class="row justify-content-center">
+              <Bars />
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 }
